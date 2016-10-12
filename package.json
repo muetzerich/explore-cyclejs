@@ -1,10 +1,10 @@
 {
-  "name": "cyclejs-starter",
+  "name": "Explore Cycle.js",
   "version": "3.0.0",
-  "description": "Cycle.js starter template with ES6 and hot reload.",
+  "description": "Cycle.js template and playground",
   "repository": {
     "type": "git",
-    "url": "https://github.com/andreloureiro/cyclejs-starter"
+    "url": "https://github.com/muetzerich/explore-cyclejs"
   },
   "keywords": [
     "reactive",
@@ -20,7 +20,7 @@
     "start": "npm install && npm run serve",
     "build": "NODE_ENV=production webpack"
   },
-  "author": "Andre Loureiro",
+  "author": "Maximilian Vogel",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.10.4",
