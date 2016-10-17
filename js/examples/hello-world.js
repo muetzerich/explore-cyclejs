@@ -1,5 +1,4 @@
-import xs from 'xstream';
-import {div, input, h1} from '@cycle/dom';
+import {div, input, h1} from "@cycle/dom";
 
 const intent = sources => ({
   inputValue$: sources.DOM
