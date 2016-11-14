@@ -1,5 +1,6 @@
 import xs from "xstream";
-import {div, span, button, h1, h3} from "@cycle/dom";
+import {div, span, input, h1, h3} from "@cycle/dom";
+import ramda from 'ramda'
 
 const listStyle = {
     display: 'flex',
@@ -13,6 +14,23 @@ const ButtonGroupStyle = {
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row'
+}
+
+const InputWrapperStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column'
+}
+
+const inputStyle = {
+    width: "400px",
+    height: "40px",
+    margin:"20px",
+    font: "22px Roboto, Arial",
+    boxShadow: "0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15)",
+    borderRadius: "5px",
+    border: "none"
 }
 
 const cardStyle = {
@@ -50,7 +68,7 @@ const cardContentStyle = {
     color: "#000"
 }
 
-const materialButton = {
+const materialButtonStyle = {
     margin:"10px",
     backgroundColor: "#d23f31",
     display: "flex",
@@ -66,10 +84,21 @@ const materialButton = {
 
 export function Blackboard(sources) {
 
+    const input$ = sources.DOM
+        .select('.searchInput')
+        .events('input')
+        .map(ev =>ev.target.value)
+        .startWith('')
+
     const infbButton$ = sources.DOM
         .select('.infb')
         .events('click')
         .map(()=> generateRestObject('INFB'))
+
+    const mkibButton$ = sources.DOM
+        .select('.mkib')
+        .events('click')
+        .map(()=> generateRestObject('MKIB'))
 
     const infmButton$ = sources.DOM
         .select('.infm')
@@ -82,25 +111,33 @@ export function Blackboard(sources) {
         .map(res => res.body)
         .startWith([])
 
-    const request$ = xs.merge(infbButton$, infmButton$)
+    const request$ = xs.merge(infbButton$, infmButton$, mkibButton$)
 
-    const vdom$ = response$
-        .map(text =>
+    const state$ = xs.combine(response$, input$)
+
+    const vdom$ = state$
+        .map(([text, x]) =>
             div('.container',[
                 div('.div', {style: ButtonGroupStyle},[
-                    div('.infb',{style: materialButton}, 'INFB'),
-                    div('.infm',{style: materialButton}, 'INFM'),
+                    div('.infb',{style: materialButtonStyle}, 'INFB'),
+                    div('.mkib',{style: materialButtonStyle}, 'MKIB'),
+                    div('.infm',{style: materialButtonStyle}, 'INFM'),
+                ]),
+                div('.div', {style: InputWrapperStyle},[
+                    input('.searchInput', {attrs: {type: 'text'},style: inputStyle})
                 ]),
                 div('.div', {style: listStyle},[
                     div('.item',
-                    text.map(item =>
-                        div('.item',{style: cardStyle},[
+                    text.map(item =>{
+                        if( item.title.toLowerCase().indexOf(x.toLowerCase()) >= 0
+                            || item.content.toLowerCase().indexOf(x.toLowerCase()) >= 0){
+                            return div('.item',{style: cardStyle},[
                             h1('.title',{style: cardTitleStyle}, item.title),
                             h3('.title',{style: cardSubTitleStyle}, item.subTitle),
-                            h3('.title',{style: cardSubTitleStyle}, item.type),
                             div('.item',{style: cardContentWrapperStyle},[
                             span('.content', {style: cardContentStyle}, item.content)])
-                        ]))
+                        ]) }
+                        })
                      )])
                 ])
             );
