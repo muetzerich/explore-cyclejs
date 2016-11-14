@@ -44,8 +44,8 @@ const cardStyle = {
 }
 
 const cardTitleStyle = {
-    padding: "20px",
-    paddingBottom:"0",
+    paddingLeft: "20px",
+    paddingTop:"10px",
     fontSize:"24px",
     color: "#000"
 }
@@ -64,8 +64,9 @@ const cardContentWrapperStyle = {
 }
 
 const cardContentStyle = {
-    fontSize:"16px",
-    color: "#000"
+    fontSize: "16px",
+    color: "#000",
+    whiteSpace: "pre-wrap"
 }
 
 const materialButtonStyle = {
