@@ -93,6 +93,7 @@ export function Blackboard(sources) {
     const infbButton$ = sources.DOM
         .select('.infb')
         .events('click')
+        .startWith(generateRestObject('INFB'))
         .map(()=> generateRestObject('INFB'))
 
     const mkibButton$ = sources.DOM
