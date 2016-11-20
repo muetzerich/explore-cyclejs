@@ -73,6 +73,7 @@ const cardContentStyle = {
 
 const materialButtonStyle = {
     margin:"10px",
+    cursor:"pointer",
     backgroundColor: "#d23f31",
     display: "flex",
     alignItems: "center",
