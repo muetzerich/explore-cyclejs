@@ -4,7 +4,7 @@ import {makeHTTPDriver} from '@cycle/http';
 
 import {App} from './helloWorld/helloWorld'
 import {Blackboard} from './blackboard/blackboard'
-
+import {Filter} from './filter/filter'
 
 const main = Blackboard
 

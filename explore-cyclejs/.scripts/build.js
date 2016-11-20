@@ -13,7 +13,7 @@ mkdirp.sync(buildPath)
 
 var compiler = webpack({
   entry: [
-    './src/'
+    './src/index'
   ],
   output: {
     filename: 'bundle.js',

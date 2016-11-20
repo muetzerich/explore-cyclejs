@@ -23,7 +23,7 @@ const InputWrapperStyle = {
     flexDirection: 'column'
 }
 
-const inputStyle = {
+const inputStlyle = {
     width: "400px",
     height: "40px",
     margin:"20px",
@@ -32,8 +32,6 @@ const inputStyle = {
     borderRadius: "5px",
     border: "none"
 }
-
-//const a = {...inputStyle, witdth:"40px"}
 
 const cardStyle = {
     margin: "15px",
@@ -85,38 +83,53 @@ const materialButtonStyle = {
     boxShadow: "0 2px 5px 0 rgba(0, 0, 0, 0.26)"
 }
 
-export function Blackboard(sources) {
 
-    const input$ = sources.DOM
+function intent(sources) {
+
+    return {
+        changeInput$ : sources.DOM
         .select('.searchInput')
         .events('input')
-        .map(ev =>ev.target.value)
-        .startWith('')
+        .map(ev =>ev.target.value),
 
-    const infbButton$ = sources.DOM
+       changeInfbButton$ : sources.DOM
         .select('.infb')
-        .events('click')
-        .startWith(generateRestObject('INFB'))
-        .map(()=> generateRestObject('INFB'))
+        .events('click'),
 
-    const mkibButton$ = sources.DOM
+       changeMkibButton$: sources.DOM
         .select('.mkib')
         .events('click')
-        .map(()=> generateRestObject('MKIB'))
+        .map(()=> generateRestObject('MKIB')),
 
-    const infmButton$ = sources.DOM
+       changeInfmButton$: sources.DOM
         .select('.infm')
         .events('click')
-        .map(()=> generateRestObject('INFM'))
+        .map(()=> generateRestObject('INFM')),
 
-    const response$ = sources.HTTP
+       newResponse$: sources.HTTP
         .select('blackboard')
         .flatten()
         .map(res => res.body)
         .startWith([])
+}
+}
+
+function model(actions) {
+    const input$ = actions.changeInput$
+    const infbButton$ = actions.changeInfbButton$
+        .startWith(generateRestObject('INFB'))
+        .map(()=> generateRestObject('INFB'));
+
 
     const request$ = xs.merge(infbButton$, infmButton$, mkibButton$)
     const state$ = xs.combine(response$, input$)
+}
+
+export function BlackboardMVI(sources) {
+
+    model(intent(sources))
+
+
 
     const vdom$ = state$
         .map(([list, inputText]) =>
@@ -131,19 +144,19 @@ export function Blackboard(sources) {
                 ]),
                 div('.div', {style: listStyle},[
                     div('.item',
-                    list.map(item =>{
-                        if( item.title.toLowerCase().indexOf(inputText.toLowerCase()) >= 0
-                            || item.content.toLowerCase().indexOf(inputText.toLowerCase()) >= 0){
-                            return div('.item',{style: cardStyle},[
-                            h1('.title',{style: cardTitleStyle}, item.title),
-                            h3('.title',{style: cardSubTitleStyle}, item.subTitle),
-                            div('.item',{style: cardContentWrapperStyle},[
-                            span('.content', {style: cardContentStyle}, item.content)])
-                        ]) }
+                        list.map(item =>{
+                            if( item.title.toLowerCase().indexOf(inputText.toLowerCase()) >= 0
+                                || item.content.toLowerCase().indexOf(inputText.toLowerCase()) >= 0){
+                                return div('.item',{style: cardStyle},[
+                                    h1('.title',{style: cardTitleStyle}, item.title),
+                                    h3('.title',{style: cardSubTitleStyle}, item.subTitle),
+                                    div('.item',{style: cardContentWrapperStyle},[
+                                        span('.content', {style: cardContentStyle}, item.content)])
+                                ]) }
                         })
-                     )])
-                ])
-            );
+                    )])
+            ])
+        );
 
     return {
         DOM: vdom$,
@@ -152,7 +165,7 @@ export function Blackboard(sources) {
 }
 
 function generateRestObject(course) {
-     return { url: `https://www.iwi.hs-karlsruhe.de/Intranetaccess/REST/newsbulletinboard/${course}`,
+    return { url: `https://www.iwi.hs-karlsruhe.de/Intranetaccess/REST/newsbulletinboard/${course}`,
         category: 'blackboard'
     }
 }
