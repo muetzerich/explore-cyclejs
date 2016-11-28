@@ -1,6 +1,6 @@
 import {div, input, h1} from '@cycle/dom'
 
-export function App (sources) {
+export function HelloWorld (sources) {
   const dom$ = sources.DOM.select('.input').events('input')
       .map(ev => ev.target.value)
       .startWith('')

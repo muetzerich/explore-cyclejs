@@ -21,7 +21,8 @@
     "@cycle/http": "^11.2.0",
     "@cycle/xstream-run": "^3.1.0",
     "ramda": "^0.22.1",
-    "xstream": "^6.6.0"
+    "xstream": "^6.6.0",
+    "blackboard-style": "latest"
   },
   "scripts": {
     "start": "node .scripts/start.js",

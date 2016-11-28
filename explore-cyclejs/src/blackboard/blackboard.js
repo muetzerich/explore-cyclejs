@@ -1,90 +1,18 @@
 import xs from "xstream";
 import {div, span, input, h1, h3} from "@cycle/dom";
-import ramda from 'ramda'
+import {
+    ButtonGroupStyle,
+    cardContentStyle,
+    cardContentWrapperStyle,
+    cardStyle,
+    cardTitleStyle,
+    cardSubTitleStyle,
+    materialButtonStyle,
+    listStyle,
+    inputStyle,
+    InputWrapperStyle
+} from "./styles/blackboard-style";
 
-const listStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column'
-}
-
-const ButtonGroupStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row'
-}
-
-const InputWrapperStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column'
-}
-
-const inputStyle = {
-    width: "400px",
-    height: "40px",
-    margin:"20px",
-    font: "22px Roboto, Arial",
-    boxShadow: "0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15)",
-    borderRadius: "5px",
-    border: "none"
-}
-
-//const a = {...inputStyle, witdth:"40px"}
-
-const cardStyle = {
-    margin: "15px",
-    position: "relative",
-    borderRadius: "2px",
-    overflow:  "hidden",
-    backgroundColor: "#fafafa",
-    width: "600px",
-    boxShadow: "0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15)"
-}
-
-const cardTitleStyle = {
-    paddingLeft: "20px",
-    paddingTop:"10px",
-    fontSize:"24px",
-    color: "#000"
-}
-
-const cardSubTitleStyle = {
-    paddingLeft: "20px",
-    paddingBottom:"10px",
-    fontSize:"16px",
-    color: "#A9A9A9"
-}
-
-
-const cardContentWrapperStyle = {
-    padding: "20px",
-    borderTop: "1px solid #E0E0E0"
-}
-
-const cardContentStyle = {
-    fontSize: "16px",
-    color: "#000",
-    whiteSpace: "pre-wrap"
-}
-
-const materialButtonStyle = {
-    margin:"10px",
-    cursor:"pointer",
-    backgroundColor: "#d23f31",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "56px",
-    height: "56px",
-    borderRadius: "50%",
-    color: "#fff",
-    overflow: "hidden",
-    boxShadow: "0 2px 5px 0 rgba(0, 0, 0, 0.26)"
-}
 
 export function Blackboard(sources) {
 
@@ -132,19 +60,19 @@ export function Blackboard(sources) {
                 ]),
                 div('.div', {style: listStyle},[
                     div('.item',
-                    list.map(item =>{
-                        if( item.title.toLowerCase().indexOf(inputText.toLowerCase()) >= 0
-                            || item.content.toLowerCase().indexOf(inputText.toLowerCase()) >= 0){
-                            return div('.item',{style: cardStyle},[
-                            h1('.title',{style: cardTitleStyle}, item.title),
-                            h3('.title',{style: cardSubTitleStyle}, item.subTitle),
-                            div('.item',{style: cardContentWrapperStyle},[
-                            span('.content', {style: cardContentStyle}, item.content)])
-                        ]) }
+                        list.map(item =>{
+                            if( item.title.toLowerCase().indexOf(inputText.toLowerCase()) >= 0
+                                || item.content.toLowerCase().indexOf(inputText.toLowerCase()) >= 0){
+                                return div('.item',{style: cardStyle},[
+                                    h1('.title',{style: cardTitleStyle}, item.title),
+                                    h3('.title',{style: cardSubTitleStyle}, item.subTitle),
+                                    div('.item',{style: cardContentWrapperStyle},[
+                                        span('.content', {style: cardContentStyle}, item.content)])
+                                ]) }
                         })
-                     )])
-                ])
-            );
+                    )])
+            ])
+        );
 
     return {
         DOM: vdom$,
@@ -153,7 +81,7 @@ export function Blackboard(sources) {
 }
 
 function generateRestObject(course) {
-     return { url: `https://www.iwi.hs-karlsruhe.de/Intranetaccess/REST/newsbulletinboard/${course}`,
+    return { url: `https://www.iwi.hs-karlsruhe.de/Intranetaccess/REST/newsbulletinboard/${course}`,
         category: 'blackboard'
     }
 }
