@@ -7,7 +7,7 @@
 <div align="center">
 <br/>
 <br/>
-  <strong>Collection of various Cycle.js programs. <br/>
+  <strong>Collection of various Cycle.js programs. :rocket: <br/>
           Created in the context of my paper about Cycle.js at the University of Applied Science Karlsruhe
 </strong>
 </div>
@@ -46,7 +46,7 @@ Start a local server at `http://localhost:8000` for your application with:
 ### Production
 `npm run build`: Generate a production-ready build content, on the build folder (this folder is gitignored)
 
-**[:arrow_up: back to top](#Usage)**
+**[:arrow_up: back to top](#usage)**
 
 ---
 ### License
