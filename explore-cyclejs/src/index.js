@@ -5,8 +5,9 @@ import {makeHTTPDriver} from '@cycle/http';
 import {App} from './helloWorld/helloWorld'
 import {Blackboard} from './blackboard/blackboard'
 import {Filter} from './filter/filter'
+import {FilterMVI} from './filter/filterMVI'
 
-const main = Blackboard
+const main = FilterMVI
 
 const drivers = {
   DOM: makeDOMDriver('#app'),
