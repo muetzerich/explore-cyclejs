@@ -77,7 +77,7 @@ function view(state$) {
                     div('.infm',{style: materialButtonStyle}, 'INFM'),
                 ]),
                 div('.div', {style: InputWrapperStyle},[
-                    input('.searchInput', {attrs: {type: 'text'},style: inputStyle})
+                    input('.searchInput', {attrs: {type: 'text', placeholder:' z.B. Probeklausur'}, style: inputStyle})
                 ]),
                 div('.div', {style: listStyle},[
                     div('.item',
@@ -96,6 +96,12 @@ function view(state$) {
         );
 }
 
+function generateRestObject(course) {
+    return { url: `https://www.iwi.hs-karlsruhe.de/Intranetaccess/REST/newsbulletinboard/${course}`,
+        category: 'blackboard'
+    }
+}
+
 export function BlackboardMVI(sources) {
     const responses = handleResponse(sources);
 
@@ -107,11 +113,5 @@ export function BlackboardMVI(sources) {
         DOM: vdom$,
         HTTP: state$.inputs
     };
-}
-
-function generateRestObject(course) {
-    return { url: `https://www.iwi.hs-karlsruhe.de/Intranetaccess/REST/newsbulletinboard/${course}`,
-        category: 'blackboard'
-    }
 }
 

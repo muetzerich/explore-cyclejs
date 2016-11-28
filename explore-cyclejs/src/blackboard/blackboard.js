@@ -56,7 +56,7 @@ export function Blackboard(sources) {
                     div('.infm',{style: materialButtonStyle}, 'INFM'),
                 ]),
                 div('.div', {style: InputWrapperStyle},[
-                    input('.searchInput', {attrs: {type: 'text'},style: inputStyle})
+                    input('.searchInput', {attrs: {type: 'text', placeholder:' z.B. Probeklausur'}, style: inputStyle})
                 ]),
                 div('.div', {style: listStyle},[
                     div('.item',
