@@ -1,10 +1,38 @@
-#Explore Cycle.js
+<h1 align="center">Explore Cycle.js</h1>
 
 
-![rocket] (https://c1.staticflickr.com/9/8397/8670674140_262b2ed869_b.jpg)
+<div align="center">
+  <img alt="logo" src="https://raw.githubusercontent.com/cyclejs/cyclejs/master/logo.png" width="128">
+</div>
+<div align="center">
+<br/>
+<br/>
+  <strong>Collection of various Cycle.js programs. <br/>
+          Created in the context of my paper about Cycle.js at the University of Applied Science Karlsruhe
+</strong>
+</div>
 
 
 ## Usage
+
+### Choose Function
+
+The following Cycle.js functions are available in this repository.
+
+* unspectacular [index.js](src/helloWorld/helloWorld.js)
+* a simple filter program [index.js](src/filter/filter.js)
+* the filter program refactored with model-view-pattern
+* a more complex, styled app with http-requests, Bulletin board for our faculty
+* Bulletin board for our faculty refactored with model-view-pattern
+
+To use them you have to enter the desired function in the [index.js](src/index.js) file.
+
+```javascript
+//Choose active Cycle.js Function here
+ const main = BlackboardMVI
+```
+
+**[:arrow_up: back to top](#table-of-contents)**
 
 ### Development
 
@@ -18,3 +46,7 @@ Start a local server at `http://localhost:8000` for your application with:
 
 ### Production
 `npm run build`: Generate a production-ready build content, on the build folder (this folder is gitignored)
+
+**[:arrow_up: back to top](#table-of-contents)**
+
+Build with :blue_heart: with ECMA6 by Maximilian Vogel
