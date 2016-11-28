@@ -21,9 +21,9 @@ The following Cycle.js functions are available in this repository.
 
 * unspectacular [index.js](explore-cyclejs/src/helloWorld/helloWorld.js)
 * a simple filter program [filter.js](explore-cyclejs/src/filter/filter.js)
-* the filter program refactored with model-view-pattern [filter.js](explore-cyclejs/src/filterMVI/filterMVI.js)
+* the filter program refactored with model-view-pattern [filter.js](explore-cyclejs/src/filter/filterMVI.js)
 * a more complex, styled app with http-requests, Bulletin board for our faculty [blackboard.js](explore-cyclejs/src/blackboard/blackboard.js)
-* Bulletin board for our faculty refactored with model-view-pattern [blackboard.js](explore-cyclejs/src/blackboardMVI/blackboardMVI.js)
+* Bulletin board for our faculty refactored with model-view-pattern [blackboard.js](explore-cyclejs/src/blackboard/blackboardMVI.js)
 
 To use them you have to enter the desired function in the [index.js](src/index.js) file:
 
