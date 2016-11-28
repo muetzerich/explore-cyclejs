@@ -19,13 +19,13 @@
 
 The following Cycle.js functions are available in this repository.
 
-* unspectacular [index.js](src/helloWorld/helloWorld.js)
-* a simple filter program [index.js](src/filter/filter.js)
-* the filter program refactored with model-view-pattern
-* a more complex, styled app with http-requests, Bulletin board for our faculty
-* Bulletin board for our faculty refactored with model-view-pattern
+* unspectacular [index.js](explore-cyclejs/src/helloWorld/helloWorld.js)
+* a simple filter program [filter.js](explore-cyclejs/src/filter/filter.js)
+* the filter program refactored with model-view-pattern [filter.js](explore-cyclejs/src/filterMVI/filterMVI.js)
+* a more complex, styled app with http-requests, Bulletin board for our faculty [blackboard.js](explore-cyclejs/src/blackboard/blackboard.js)
+* Bulletin board for our faculty refactored with model-view-pattern [blackboard.js](explore-cyclejs/src/blackboardMVI/blackboardMVI.js)
 
-To use them you have to enter the desired function in the [index.js](src/index.js) file.
+To use them you have to enter the desired function in the [index.js](src/index.js) file:
 
 ```javascript
 //Choose active Cycle.js Function here
@@ -49,4 +49,6 @@ Start a local server at `http://localhost:8000` for your application with:
 
 **[:arrow_up: back to top](#table-of-contents)**
 
-Build with :blue_heart: with ECMA6 by Maximilian Vogel
+---
+### License
+[![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)](http://creativecommons.org/publicdomain/zero/1.0/)
