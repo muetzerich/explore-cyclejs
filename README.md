@@ -46,7 +46,7 @@ Start a local server at `http://localhost:8000` for your application with:
 ### Production
 `npm run build`: Generate a production-ready build content, on the build folder (this folder is gitignored)
 
-**[:arrow_up: back to top](#usage)**
+**[:arrow_up: back to top](#explore-cyclejs)**
 
 ---
 ### License
