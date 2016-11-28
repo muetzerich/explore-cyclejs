@@ -17,41 +17,54 @@ import {
 function intent(sources) {
     return {
         changeInput$ : sources.DOM
-        .select('.searchInput')
-        .events('input')
-        .map(ev =>ev.target.value),
+            .select('.searchInput')
+            .events('input')
+            .map(ev =>ev.target.value),
 
-       changeInfbButton$ : sources.DOM
-        .select('.infb')
-        .events('click'),
+        changeInfbButton$ : sources.DOM
+            .select('.infb')
+            .events('click'),
 
-       changeMkibButton$: sources.DOM
-        .select('.mkib')
-        .events('click')
-        .map(()=> generateRestObject('MKIB')),
+        changeMkibButton$: sources.DOM
+            .select('.mkib')
+            .events('click'),
 
-       changeInfmButton$: sources.DOM
-        .select('.infm')
-        .events('click')
-        .map(()=> generateRestObject('INFM')),
-
-       newResponse$: sources.HTTP
-        .select('blackboard')
-        .flatten()
-        .map(res => res.body)
-        .startWith([])
-}
+        changeInfmButton$: sources.DOM
+            .select('.infm')
+            .events('click')
+    }
 }
 
-function model(actions) {
+function handleResponse(sources) {
+    return {
+        newResponse$: sources.HTTP
+            .select('blackboard')
+            .flatten()
+    }
+}
+
+function model(actions, responses) {
     const input$ = actions.changeInput$
+        .startWith('')
+
     const infbButton$ = actions.changeInfbButton$
         .startWith(generateRestObject('INFB'))
-        .map(()=> generateRestObject('INFB'));
+        .map(()=> generateRestObject('INFB'))
 
+    const mkibButton$ = actions.changeMkibButton$
+        .map(()=> generateRestObject('MKIB'))
 
-    const request$ = xs.merge(infbButton$, infmButton$, mkibButton$)
-    const state$ = xs.combine(response$, input$)
+    const infmButton$ = actions.changeInfmButton$
+        .map(()=> generateRestObject('INFM'))
+
+    const response$ = responses.newResponse$
+        .map(res => res.body)
+        .startWith([])
+
+    return {
+        inputs: xs.merge(infbButton$, infmButton$, mkibButton$),
+        data: xs.combine(response$, input$)
+    }
 }
 
 function view(state$) {
@@ -84,15 +97,15 @@ function view(state$) {
 }
 
 export function BlackboardMVI(sources) {
+    const responses = handleResponse(sources);
 
     const actions = intent(sources)
-    const state$ = model(actions)
-    const vdom$ = view(state$);
-
+    const state$ = model(actions, responses)
+    const vdom$ = view(state$.data);
 
     return {
         DOM: vdom$,
-        HTTP: request$
+        HTTP: state$.inputs
     };
 }
 
