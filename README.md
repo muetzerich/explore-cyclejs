@@ -32,7 +32,6 @@ To use them you have to enter the desired function in the [index.js](src/index.j
  const main = BlackboardMVI
 ```
 
-**[:arrow_up: back to top](#table-of-contents)**
 
 ### Development
 
@@ -47,7 +46,7 @@ Start a local server at `http://localhost:8000` for your application with:
 ### Production
 `npm run build`: Generate a production-ready build content, on the build folder (this folder is gitignored)
 
-**[:arrow_up: back to top](#table-of-contents)**
+**[:arrow_up: back to top](#Usage)**
 
 ---
 ### License
