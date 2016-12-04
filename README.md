@@ -49,4 +49,4 @@ Start a local server at `http://localhost:8000` for your application with:
 
 ---
 ### License
-[![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)](http://creativecommons.org/publicdomain/zero/1.0/)
+MIT
