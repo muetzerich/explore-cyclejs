@@ -12,9 +12,12 @@
 </strong>
 </div>
 
+## Paper
+
+[Here](explore-cyclejs/paper/Seminararbeit_MaximilianVogel_36401.pdf) you can download my paper about Cycle.js.
+
 
 ## Usage
-
 ### Choose Function
 
 The following Cycle.js functions are available in this repository.
