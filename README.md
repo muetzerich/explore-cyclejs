@@ -19,12 +19,11 @@
 
 The following Cycle.js functions are available in this repository.
 
-* unspectacular [index.js](explore-cyclejs/src/helloWorld/helloWorld.js)
-* a simple filter program [filter.js](explore-cyclejs/src/filter/filter.js)
-* the filter program refactored with model-view-pattern [filter.js](explore-cyclejs/src/filter/filterMVI.js)
-* a more complex, styled app with http-requests, Bulletin board for our faculty [blackboard.js](explore-cyclejs/src/blackboard/blackboard.js)
-* Bulletin board for our faculty refactored with model-view-pattern [blackboard.js](explore-cyclejs/src/blackboard/blackboardMVI.js)
-
+* unspectacular [Hello World](explore-cyclejs/src/helloWorld/helloWorld.js) function
+* a simple [filter function](explore-cyclejs/src/filter/filter.js)
+* the [filter function](explore-cyclejs/src/filter/filterMVI.js) refactored with model-view-pattern 
+* a more complex, styled app with http-requests: [bulletin board](explore-cyclejs/src/blackboard/blackboard.js) for our faculty
+* [bulletin board](explore-cyclejs/src/blackboard/blackboard.js) for our faculty refactored with model-view-pattern 
 To use them you have to enter the desired function in the [index.js](src/index.js) file:
 
 ```javascript
@@ -50,4 +49,4 @@ Start a local server at `http://localhost:8000` for your application with:
 
 ---
 ### License
-[![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)](http://creativecommons.org/publicdomain/zero/1.0/)
+MIT
