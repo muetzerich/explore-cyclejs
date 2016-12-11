@@ -9,7 +9,7 @@ import {Filter} from './filter/filter'
 import {FilterMVI} from './filter/filterMVI'
 
 //Choose active Cycle.js Function here
-const main = BlackboardMVI
+const main = FilterMVI
 
 const drivers = {
   DOM: makeDOMDriver('#app'),
